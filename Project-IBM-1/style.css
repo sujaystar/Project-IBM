@@ -4,17 +4,24 @@
     box-sizing: border-box;
 }
 nav{
-    background-image: url(images/hero_2.jpg);
-    height:100vh;
+    top:0;
     background-size: cover;
-    background-position: center;
 }
-
+.top{
+    background-color: #fff;
+    height: 60px;
+    position: fixed;
+    z-index: 1;
+}
+.front{
+    background-image: url(images/hero_2.jpg);
+    z-index: 0;
+}
 .nav-links{
-    float: right;
-    display: inline-block;
+    float:right;
     margin-top: 20px;
-    margin-right: 5%;
+    margin-left: 700px;
+    position: fixed;
 }
 .nav-links li{
     display: inline-block;
@@ -47,6 +54,7 @@ nav{
     margin-left: 25px;
     margin-top: 15px;
     border: 1px solid rgb(131, 26, 92);
+    position: fixed;
     
 }
 .main{
@@ -58,7 +66,8 @@ nav{
 {
     
     height: 100vh;
-    position: absolute;
+    /* position: absolute; */
+    position: relative;
     top:30%;
     left:65%;
     font-size: 40px;
