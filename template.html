@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+ /* background-color: silver;*/
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(131, 26, 92);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+.photo{
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+ /* background: rgba(166, 168, 166, 0.8);*/
+}
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: #520842;
+  color: white;
+}
+
+.logo{
+    color:white;
+    margin-left: 25px;
+    margin-top: 15px;
+    height: 40px;
+    width: 150px;
+    vertical-align: middle;
+    border: 1px solid white;
+}
+.brand{
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10px;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: rgb(131, 26, 92);
+  padding-left: 8px;
+}
+.sec{
+  position: sticky;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+</style>
+</head>
+<body>
+  
+  <div class="sidenav">
+    <div class="logo"><h4 class="brand">
+      Banker</h4>
+    </div>
+    <br>
+    <br>
+    <a href="#about">Profile</a>
+    <button class="dropdown-btn">Service 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#">Account Summary</a>
+      <a href="#">Account Statement</a>
+    </div>
+    <button class="dropdown-btn">FundTransfer
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="#">View Payees</a>
+        <a href="#">Add Payee</a>
+        <a href="#">Same Account</a>
+        <a href="#">Different Account</a>
+      </div>
+    <a href="#HomePage">Log Out</a>
+  </div>
+
+  <div class="main">
+    
+  </div>
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+</body>
+</html> 
