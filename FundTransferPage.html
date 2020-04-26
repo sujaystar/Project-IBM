@@ -27,7 +27,7 @@
            
                <input  class="inp" type="text" size="25" name=username id="pass1" placeholder="Account Number" required>
                
-               <input  class="inp" type="password" size="25" name=username id="pass2" placeholder="Cnfrm Account Number" required onkeyup="checkPass(); return false;">
+               <input  class="inp" type="password" size="25" name=username id="pass2" placeholder="Cnfrm Account Number" required onkeyup="checkPass(); return false;"><br>
                <span id="confirmMessage" class="confirmMessage"></span>
 
                <div class="btn-all">
@@ -43,7 +43,7 @@
 </form>
     <script>
         //var ifsc = document.getElementById("ifsc");
-        function ValidateIfsc(inputtext)
+    function ValidateIfsc(inputtext)
      {
          var ifscformat = /[A-Z|a-z]{4}[0][a-zA-Z0-9]{6}$/;
          if(inputtext.value.match(ifscformat))
@@ -58,7 +58,7 @@
                  return false;
              }
      }
-     function checkPass(){
+    function checkPass(){
     var pass1 = document.getElementById('pass1');
     var pass2 = document.getElementById('pass2');
     var message = document.getElementById('confirmMessage');
@@ -68,13 +68,13 @@
     {
     pass2.style.backgroundColor = goodColor;
         message.style.color = goodColor;
-        message.innerHTML = "Password Match";
+        message.innerHTML = "Account Number Match";
     }
     else
         {
             pass2.style.backgroundColor = badColor;
             message.style.color = badColor;
-            message.innerHTML = "Password does not Match";
+            message.innerHTML = "Account Number does not Match";
         }
     
 }
