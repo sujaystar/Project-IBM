@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="style1.css">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+ /* background-color: silver;*/
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color:rgb(131, 26, 92);
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+
+.photo{
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+ /* background: rgba(166, 168, 166, 0.8);*/
+}
+/* Add an active class to the active dropdown button */
+
+.logo{
+    color:white;
+    margin-left: 25px;
+    margin-top: 15px;
+    height: 40px;
+    width: 150px;
+    vertical-align: middle;
+    border: 1px solid white;
+}
+.brand{
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 20px;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 10px;
+}
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: rgb(131, 26, 92);
+  padding-left: 8px;
+}
+.sec{
+  position: sticky;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.colour a:hover{
+    background-color: white;
+    color: rgb(131, 26, 92);
+}
+.addpay a{
+     background-color: white;
+    color: rgb(131, 26, 92);
+}
+
+</style>
+</head>
+<body>
+  
+  <div class="sidenav">
+    <div class="logo"><h4 class="brand">
+      Banker</h4>
+    </div>
+    <br>
+    <br>
+    <div class="colour">
+    <a href="#about">Profile</a>
+    <button class="dropdown-btn">Service 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+      <a href="#">Account Summary</a>
+      <a href="#">Account Statement</a>
+    </div>
+    <button class="dropdown-btn">FundTransfer
+        <i class="fa fa-caret-down"></i>
+      </button>
+        <a href="#">View Payees</a>
+        <div class="addpay">
+          <a href="addpayee.html">Add Payee</a>
+        </div>
+        <a href="sameaccount.html">Same Account</a>
+        <a href="differentaccount.html">Different Account</a>
+    <a href="#HomePage">Log Out</a>
+  </div>
+ </div>
+ <div class="main">
+    <form name="page">
+        <div class="wraps">
+            <h2>ADD PAYEE</h2>
+            <div class="form1">
+                <div class="inp-field">
+                    <input class="inp"  type="text" size="25" name="ifsc" id="ifsc" placeholder="Payee Name" required>
+                   
+                     <select class="inp">
+                        <option>Saving Bank account</option>
+                        <option>Current Deposit Account</option>
+                         <option>Fixed Deposit Account</option>
+                         <option>Recurring Deposit Account</option>
+                     </select>
+                   
+                     <input  class="inp" type="text" size="25"  placeholder="IFSC" required>
+               
+                   <input  class="inp" type="text" size="25" name=username id="pass1" placeholder="Account Number" required>
+                   
+                   <input  class="inp" type="password" size="25" name=username id="pass2" placeholder="Cnfrm Account Number" required onkeyup="checkPass(); return false;">
+                   <span id="confirmMessage" class="confirmMessage"></span>
+    
+                   <div class="btn-all">
+                    <button class="btn" onclick="ValidateIfsc(document.page.ifsc)">Next</button>
+                   
+                    
+                       <a href="#"><button class="btn">Back</button></a>
+                </div>
+                    </div>
+            </div>
+                
+        </div>
+    </form>
+      <img src="images/addpayee.png" >
+ </div>
+ 
+    <script>
+        //var ifsc = document.getElementById("ifsc");
+        function ValidateIfsc(inputtext)
+     {
+         var ifscformat = /[A-Z|a-z]{4}[0][a-zA-Z0-9]{6}$/;
+         if(inputtext.value.match(ifscformat))
+             {
+                 document.form1.ifsc.focus();
+                 return true;
+             }
+         else
+             {
+                 alert("Not a valid Ifsc code");
+                  document.form1.ifsc.focus();
+                 return false;
+             }
+     }
+     function checkPass(){
+    var pass1 = document.getElementById('pass1');
+    var pass2 = document.getElementById('pass2');
+    var message = document.getElementById('confirmMessage');
+    var goodColor = "#228B22";
+    var badColor = "#8B0000";
+    if(pass1.value == pass2.value)
+    {
+    pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Account Number Match";
+    }
+    else
+        {
+            pass2.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.innerHTML = "Account Number does not Match";
+        }
+    
+}
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+</body>
+</html> 
